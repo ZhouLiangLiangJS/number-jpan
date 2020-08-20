@@ -77,7 +77,12 @@
 				uni.vibrateShort();
 				this.xz++
 				if(this.xz==this.length){
-					this.$emit('closeChange','')
+					let str=""
+					for(let item of this.arr){
+						str+=item
+					}
+					console.log(str)
+					this.$emit('closeChange',str)
 					this.close()
 				}
 				
