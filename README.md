@@ -3,7 +3,7 @@ uniapp 数字键盘
 
 # 前言
 进入github下载完整包，地址：[github地址](https://github.com/ZhouLiangLiangJS/number-jpan) 
-创作不宜，喜欢的给我点个start，坚持更新
+创作不宜，喜欢的给我点个star，坚持更新
 
 # 使用方法
 
