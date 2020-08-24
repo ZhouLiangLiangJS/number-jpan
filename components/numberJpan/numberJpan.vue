@@ -1,25 +1,27 @@
 <template>
 	<view class="numberJpan" :style="wc" v-show="flag" >
-		<view class="myshuru" :style="obj" @tap.stop="flag=true">
-			<view class="srk" :style="'width:'+100/(length||6)+'%'" v-for=" i in length||6" :id="(i-1)==xz?'numberJpanActive':''" @tap="xuanze(i-1)">
+		<!-- <view class="myshuru" :style="obj" @tap.stop="flag=true">
+			<view class="srk" :style="'width:'+100/(length||6)+'%'" v-for=" i in length||6" :id="(i-1)==xz?'numberJpanActive':''" >
 				{{arr[i-1]}}
 			</view>
+		</view> -->
+		<view class="myshuru" :style="obj" @tap.stop="flag=true">
+			<view class="gb" @tap="close()" :style="gsbstyle">×</view>
+			<view class="shuruTitle">
+				请输入支付密码
+			</view>
+			<view class="center-x">
+				<view class="srk" :style="'width:'+100/(length||6)+'%'" v-for=" i in length||6" :id="(i-1)==xz?'numberJpanActive':''" >
+					{{arr[i-1]}}
+				</view>
+			</view>
 		</view>
-		<view class="gb" @tap="close()" :style="gsbstyle">×</view>
 		<view class="jpan" :style="tsfY">
 			<view class="nav"  @tap="close()">
 				<uni-icons type="arrowdown"></uni-icons>
 			</view>
 			<view class="main">
-				<view @tap="numshuzi(1)">1</view>
-				<view @tap="numshuzi(2)">2</view>
-				<view @tap="numshuzi(3)">3</view>
-				<view @tap="numshuzi(4)">4</view>
-				<view @tap="numshuzi(5)">5</view>
-				<view @tap="numshuzi(6)">6</view>
-				<view @tap="numshuzi(7)">7</view>
-				<view @tap="numshuzi(8)">8</view>
-				<view @tap="numshuzi(9)">9</view>
+				<view v-for="i in 9" @tap="numshuzi(i)">{{i}}</view>
 				<view> </view>
 				<view @tap="numshuzi(0)">0</view>
 				<view @tap="del()">
@@ -81,7 +83,6 @@
 					for(let item of this.arr){
 						str+=item
 					}
-					console.log(str)
 					this.$emit('closeChange',str)
 					this.close()
 				}
@@ -182,8 +183,8 @@
 		.myshuru{
 			transition: all .5s;
 			position: absolute;
-			width: 80vw;
-			height: 100upx;
+			width: 70vw;
+			height: 350upx;
 			top: 50%;
 			opacity: 0;
 			transform: translate(-50%,-50%);
@@ -192,28 +193,70 @@
 			color: #000000;
 			border-radius: 20upx;
 			overflow: hidden;
-			.srk{
-				height: 100%;
-				line-height: 100upx;
+			.shuruTitle{
+				margin: 100upx auto;
+				font-weight: 900;
 				text-align: center;
-				float: left;
-				box-sizing: border-box;
-				border-left: 1px solid #EEEEEE;
-				transition: all .4s;
+				font-size: 30upx;
 			}
-			.srk:nth-child(1){
-				border-left:0px;
-				border-radius: 20upx 0 0 20upx;
+			.center-x{
+				width: 90%;
+				height: 80upx;
+				border: 1px solid #EEEEEE;
+				border-radius: 20upx;
+				position: absolute;
+				bottom: 50upx;
+				.srk{
+					height: 100%;
+					line-height: 80upx;
+					text-align: center;
+					float: left;
+					box-sizing: border-box;
+					border-left: 1px solid #EEEEEE;
+					transition: all .4s;
+				}
+				.srk:nth-child(1){
+					border-left:0px;
+					border-radius: 20upx 0 0 20upx;
+				}
 			}
 			
 		}
+		// .myshuru{
+		// 	transition: all .5s;
+		// 	position: absolute;
+		// 	width: 80vw;
+		// 	height: 100upx;
+		// 	top: 50%;
+		// 	opacity: 0;
+		// 	transform: translate(-50%,-50%);
+		// 	background-color: #FFFFFF;
+		// 	left: 50%;
+		// 	color: #000000;
+		// 	border-radius: 20upx;
+		// 	overflow: hidden;
+		// 	.srk{
+		// 		height: 100%;
+		// 		line-height: 100upx;
+		// 		text-align: center;
+		// 		float: left;
+		// 		box-sizing: border-box;
+		// 		border-left: 1px solid #EEEEEE;
+		// 		transition: all .4s;
+		// 	}
+		// 	.srk:nth-child(1){
+		// 		border-left:0px;
+		// 		border-radius: 20upx 0 0 20upx;
+		// 	}
+			
+		// }
 	}
 	.gb{
 		position: absolute;
 		font-size: 50upx;
 		top: 0;
-		color: #FFFFFF;
-		right: 30upx;
+		color: #AAAAAA;
+		left: 30upx;
 		transition: all .5s;
 	}
 </style>
