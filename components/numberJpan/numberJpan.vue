@@ -205,6 +205,7 @@
 				border: 1px solid #EEEEEE;
 				border-radius: 20upx;
 				position: absolute;
+				overflow: hidden;
 				bottom: 50upx;
 				.srk{
 					height: 100%;
