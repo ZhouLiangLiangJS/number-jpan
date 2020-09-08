@@ -17,8 +17,9 @@ components:{
 ```
 
 ```
-<number-jpan :length="6" @closeChange="closeChange($event)" ref="numberPad"></number-jpan>
+<number-jpan :length="6" @closeChange="closeChange($event)" :showNum="false" ref="numberPad"></number-jpan>
 length:        需要输入多少个字（数字类型）
+showNum:       是否显示隐藏输入信息
 closeChange：  回调函数通过closeChange的第一个参数可获取值
 
 
