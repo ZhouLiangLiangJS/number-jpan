@@ -11,8 +11,8 @@
 				请输入支付密码
 			</view>
 			<view class="center-x">
-				<view class="srk" :style="'width:'+100/(length||6)+'%'" v-for=" i in length||6" :id="(i-1)==xz?'numberJpanActive':''" >
-					{{arr[i-1]}}
+				<view class="srk" :style="'width:'+100/(length||6)+'%'" v-for=" i in length||6" :id="(i-1)==xz?'numberJpanActive':''" :key="i" >
+					{{showNum?arr[i-1]:typeof arr[i-1]=="number"?"●":""}}
 				</view>
 			</view>
 		</view>
@@ -58,10 +58,11 @@
 				},
 				tsfY:{
 					'transform':'translateY(100%)'
-				}
+				},
+				showNum:false
 			};
 		},
-		props:['length'],
+		props:['length','showNum'],
 		methods:{
 			del(){
 				if(this.xz>0){
@@ -206,6 +207,8 @@
 				border-radius: 20upx;
 				position: absolute;
 				overflow: hidden;
+				left: 50%;
+				transform: translateX(-50%);
 				bottom: 50upx;
 				.srk{
 					height: 100%;

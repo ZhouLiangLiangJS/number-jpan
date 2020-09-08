@@ -4,7 +4,7 @@
 		<view class="" v-if="text!=''">
 			我输入的内容为：{{text}}
 		</view>
-		<number-jpan :length="6" @closeChange="closeChange($event)" ref="numberPad"></number-jpan>
+		<number-jpan :length="4" @closeChange="closeChange($event)" :showNum="false" ref="numberPad"></number-jpan>
 	</view>
 </template>
 
