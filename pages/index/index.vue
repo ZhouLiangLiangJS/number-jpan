@@ -4,12 +4,12 @@
 		<view class="" v-if="text!=''">
 			我输入的内容为：{{text}}
 		</view>
-		<number-jpan :length="4" @closeChange="closeChange($event)" :showNum="false" ref="numberPad"></number-jpan>
+		 <number-jpan :length="4" @closeChange="closeChange($event)" :showNum="true" ref="numberPad"></number-jpan>
 	</view>
 </template>
 
 <script>
-	import numberJpan from "@/components/numberJpan/numberJpan.vue";
+	import numberJpan from "../../components/numberJpan/numberJpan.vue";
 	export default {
 		components:{
 			'number-jpan':numberJpan

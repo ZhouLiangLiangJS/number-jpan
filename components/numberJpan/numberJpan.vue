@@ -12,7 +12,12 @@
 			</view>
 			<view class="center-x">
 				<view class="srk" :style="'width:'+100/(length||6)+'%'" v-for=" i in length||6" :id="(i-1)==xz?'numberJpanActive':''" :key="i" >
-					{{showNum?arr[i-1]:typeof arr[i-1]=="number"?"●":""}}
+					<!-- #ifdef MP-WEIXIN -->
+					{{showNum?arr[i]==null?'':arr[i]:arr[i]!=null?"●" : ""}}
+					<!-- #endif -->
+					<!-- #ifndef MP-WEIXIN -->
+					{{showNum?arr[i-1]==null?'':arr[i-1]:arr[i-1]!=null?"●" : ""}}
+					<!-- #endif -->
 				</view>
 			</view>
 		</view>
@@ -21,7 +26,12 @@
 				<uni-icons type="arrowdown"></uni-icons>
 			</view>
 			<view class="main">
+				<!-- #ifdef MP-WEIXIN -->
+				<view v-for="i in 9" @tap="numshuzi(i+1)">{{i+1}}</view>
+				<!-- #endif -->
+				<!-- #ifndef MP-WEIXIN -->
 				<view v-for="i in 9" @tap="numshuzi(i)">{{i}}</view>
+				<!-- #endif -->
 				<view> </view>
 				<view @tap="numshuzi(0)">0</view>
 				<view @tap="del()">
@@ -58,8 +68,7 @@
 				},
 				tsfY:{
 					'transform':'translateY(100%)'
-				},
-				showNum:false
+				}
 			};
 		},
 		props:['length','showNum'],
@@ -94,19 +103,13 @@
 				this.arr=[];
 				this.xz=0;
 				this.clear1=setTimeout(()=>{
-					this.wc={
-						'background-color':"rgba(0, 0, 0, .5)"
-					};
-					this.obj={
-						"opacity":1,
-						"top":'40%'
-					};
-					this.gsbstyle={
-						"opacity":1
-					};
-					this.tsfY={
-						'transform':'translateY(0%)'
-					}
+					this.wc='background-color:rgba(0, 0, 0, .5)';
+					
+					this.obj='opacity:1;top:40%';
+					
+					this.gsbstyle="opacity:1";
+						
+					this.tsfY='transform:translateY(0%)';
 				},100)
 			},
 			close(){
@@ -226,34 +229,6 @@
 			}
 			
 		}
-		// .myshuru{
-		// 	transition: all .5s;
-		// 	position: absolute;
-		// 	width: 80vw;
-		// 	height: 100upx;
-		// 	top: 50%;
-		// 	opacity: 0;
-		// 	transform: translate(-50%,-50%);
-		// 	background-color: #FFFFFF;
-		// 	left: 50%;
-		// 	color: #000000;
-		// 	border-radius: 20upx;
-		// 	overflow: hidden;
-		// 	.srk{
-		// 		height: 100%;
-		// 		line-height: 100upx;
-		// 		text-align: center;
-		// 		float: left;
-		// 		box-sizing: border-box;
-		// 		border-left: 1px solid #EEEEEE;
-		// 		transition: all .4s;
-		// 	}
-		// 	.srk:nth-child(1){
-		// 		border-left:0px;
-		// 		border-radius: 20upx 0 0 20upx;
-		// 	}
-			
-		// }
 	}
 	.gb{
 		position: absolute;
