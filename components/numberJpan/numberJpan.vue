@@ -75,9 +75,10 @@
 		methods:{
 			del(){
 				if(this.xz>0){
-					let arr1=this.arr
-					arr1[this.xz]=""
-					this.arr=arr1
+					//let arr1=this.arr
+					//arr1[this.xz]=""
+					//this.arr=arr1
+					this.arr.pop();
 					this.xz--;
 				}
 				uni.vibrateShort();
